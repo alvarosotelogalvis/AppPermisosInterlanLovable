@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { DEMO_ONLY } from '@/integrations/supabase/client';
 import Navbar from '@/components/Navbar';
 import BackButton from '@/components/BackButton';
 import { motivoRequiresDocuments } from '@/data/mockData';
@@ -108,7 +109,7 @@ const Administracion = () => {
               </div>
               <div className="flex items-center gap-2">
                 <span className="font-nunito text-[12px] text-interlan-text-muted">{isRealMode ? 'Real' : 'Demo'}</span>
-                <Switch checked={isRealMode} onCheckedChange={setIsRealMode} />
+                <Switch checked={isRealMode} onCheckedChange={setIsRealMode} disabled={DEMO_ONLY} />
               </div>
             </div>
 

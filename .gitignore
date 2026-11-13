@@ -26,3 +26,10 @@ dist-ssr
 # Variables de entorno (no subir)
 .env
 
+
+# Notas locales del entorno Power Apps (no subir)
+entorno-powerapps.md
+
+# Power Apps code apps (configuración local del entorno, la genera pac code init / npx power-apps init)
+power.config.json
+.power/

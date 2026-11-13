@@ -1,10 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import { componentTagger } from "lovable-tagger";
+import { powerApps } from "@microsoft/power-apps-vite/plugin";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+// Configuración para Power Apps code apps (rama powerapps).
+// El plugin powerApps() integra la app con el host de Power Apps (desarrollo local y publicación).
+export default defineConfig({
   server: {
     host: "::",
     port: 8080,
@@ -12,7 +14,7 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
+  plugins: [react(), powerApps()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -22,4 +24,4 @@ export default defineConfig(({ mode }) => ({
   optimizeDeps: {
     include: ["react", "react-dom", "react/jsx-runtime", "@tanstack/react-query"],
   },
-}));
+});

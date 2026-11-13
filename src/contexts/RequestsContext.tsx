@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from 'react';
-import { supabase } from '@/integrations/supabase/client';
+import { supabase, DEMO_ONLY } from '@/integrations/supabase/client';
 import { PermissionRequest, mockRequests as initialMockRequests } from '@/data/mockData';
 import { fetchRequests, createRequest, updateRequestInDB } from '@/services/requestsService';
 import {
@@ -29,6 +29,7 @@ export const RequestsProvider = ({ children }: { children: ReactNode }) => {
   const [mockRequests, setMockRequests] = useState<PermissionRequest[]>(initialMockRequests);
   const [dbRequests, setDbRequests] = useState<PermissionRequest[]>([]);
   const [isRealMode, setIsRealModeState] = useState(() => {
+    if (DEMO_ONLY) return false; // Power Apps (demo): siempre datos de prueba en memoria
     try { return localStorage.getItem('appMode') === 'real'; } catch { return false; }
   });
 
@@ -64,6 +65,7 @@ export const RequestsProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const setIsRealMode = async (v: boolean) => {
+    if (DEMO_ONLY) return; // En modo solo-demo no se permite cambiar a modo real
     // Flip mode immediately so the UI re-renders against the new data source right away.
     setIsRealModeState(v);
     try { localStorage.setItem('appMode', v ? 'real' : 'demo'); } catch {}

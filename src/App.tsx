@@ -20,13 +20,20 @@ import AccionCorreo from "./pages/AccionCorreo";
 
 const queryClient = new QueryClient();
 
+// Power Apps code apps sirve la app desde una ruta propia (…/index.html).
+// Igual que en la plantilla oficial de Microsoft: normalizar la URL y usarla como basename.
+const BASENAME = new URL(".", location.href).pathname;
+if (location.pathname.endsWith("/index.html")) {
+  history.replaceState(null, "", BASENAME + location.search + location.hash);
+}
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <AuthProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={BASENAME}>
           <RequestsProvider>
           <AppConfigProvider>
             <Routes>
