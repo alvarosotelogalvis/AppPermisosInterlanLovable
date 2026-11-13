@@ -1,0 +1,1 @@
+ALTER TABLE public.solicitudes ADD COLUMN IF NOT EXISTS rejected_by TEXT;

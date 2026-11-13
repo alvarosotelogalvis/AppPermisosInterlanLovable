@@ -1,0 +1,1 @@
+CREATE POLICY "Allow all delete on solicitudes" ON public.solicitudes FOR DELETE TO public USING (true);

@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 0%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 0%;
+
+    --primary: 222 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 228 100% 96%;
+    --secondary-foreground: 222 100% 50%;
+
+    --muted: 233 100% 98%;
+    --muted-foreground: 0 0% 53%;
+
+    --accent: 233 100% 98%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 4 90% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 91%;
+    --input: 0 0% 91%;
+    --ring: 222 100% 50%;
+
+    --radius: 0.5rem;
+
+    --interlan-blue: 222 100% 50%;
+    --interlan-black: 0 0% 0%;
+    --interlan-light-blue: 228 100% 96%;
+    --interlan-light-gray: 233 100% 98%;
+    --interlan-border: 0 0% 91%;
+    --interlan-text-secondary: 0 0% 33%;
+    --interlan-text-muted: 0 0% 53%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Nunito Sans', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+  }
+}
